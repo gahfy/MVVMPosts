@@ -11,11 +11,17 @@ import android.support.v7.widget.LinearLayoutManager
 import net.gahfy.mvvmposts.R
 import net.gahfy.mvvmposts.databinding.ActivityPostListBinding
 import net.gahfy.mvvmposts.injection.ViewModelFactory
+import net.gahfy.mvvmposts.model.PostDao
+import net.gahfy.mvvmposts.network.PostApi
+import org.koin.android.ext.android.inject
 
 class PostListActivity: AppCompatActivity() {
     private lateinit var binding: ActivityPostListBinding
     private lateinit var viewModel: PostListViewModel
     private var errorSnackbar: Snackbar? = null
+
+    private val postDao : PostDao by inject()
+    private val postApi: PostApi by inject()
 
     override fun onCreate(savedInstanceState: Bundle?){
         super.onCreate(savedInstanceState)
@@ -23,7 +29,7 @@ class PostListActivity: AppCompatActivity() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_post_list)
         binding.postList.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
 
-        viewModel = ViewModelProviders.of(this, ViewModelFactory(this)).get(PostListViewModel::class.java)
+        viewModel = ViewModelProviders.of(this, ViewModelFactory(postDao, postApi)).get(PostListViewModel::class.java)
         viewModel.errorMessage.observe(this, Observer {
             errorMessage -> if(errorMessage != null) showError(errorMessage) else hideError()
         })

@@ -11,11 +11,8 @@ import net.gahfy.mvvmposts.base.BaseViewModel
 import net.gahfy.mvvmposts.model.Post
 import net.gahfy.mvvmposts.model.PostDao
 import net.gahfy.mvvmposts.network.PostApi
-import javax.inject.Inject
 
-class PostListViewModel(private val postDao: PostDao):BaseViewModel(){
-    @Inject
-    lateinit var postApi: PostApi
+class PostListViewModel(private val postDao: PostDao, private val postApi: PostApi):BaseViewModel(){
     val postListAdapter: PostListAdapter = PostListAdapter()
 
     val loadingVisibility: MutableLiveData<Int> = MutableLiveData()
