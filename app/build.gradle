@@ -33,7 +33,7 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation"org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
+    implementation"org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation "com.android.support:appcompat-v7:$android_support_version"
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
@@ -63,10 +63,8 @@ dependencies {
     implementation "com.squareup.retrofit2:adapter-rxjava2:$retrofit_version"
     implementation "com.squareup.retrofit2:converter-moshi:$retrofit_version"
 
-    // Dagger 2
-    implementation "com.google.dagger:dagger:$dagger2_version"
-    kapt "com.google.dagger:dagger-compiler:$dagger2_version"
-    compileOnly "org.glassfish:javax.annotation:3.1.1"
+    // Koin
+    implementation "org.koin:koin-android-architecture:$koin_version"
 
     //Rx
     implementation "io.reactivex.rxjava2:rxjava:2.1.15"
