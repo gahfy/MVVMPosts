@@ -1,7 +1,6 @@
 package net.gahfy.mvvmposts.ui.post
 
 import android.arch.lifecycle.Observer
-import android.arch.lifecycle.ViewModelProviders
 import android.databinding.DataBindingUtil
 import android.os.Bundle
 import android.support.annotation.StringRes
@@ -10,18 +9,12 @@ import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import net.gahfy.mvvmposts.R
 import net.gahfy.mvvmposts.databinding.ActivityPostListBinding
-import net.gahfy.mvvmposts.injection.ViewModelFactory
-import net.gahfy.mvvmposts.model.PostDao
-import net.gahfy.mvvmposts.network.PostApi
-import org.koin.android.ext.android.inject
+import org.koin.android.architecture.ext.viewModel
 
 class PostListActivity: AppCompatActivity() {
     private lateinit var binding: ActivityPostListBinding
-    private lateinit var viewModel: PostListViewModel
+    private val viewModel by viewModel<PostListViewModel>()
     private var errorSnackbar: Snackbar? = null
-
-    private val postDao : PostDao by inject()
-    private val postApi: PostApi by inject()
 
     override fun onCreate(savedInstanceState: Bundle?){
         super.onCreate(savedInstanceState)
@@ -29,7 +22,6 @@ class PostListActivity: AppCompatActivity() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_post_list)
         binding.postList.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
 
-        viewModel = ViewModelProviders.of(this, ViewModelFactory(postDao, postApi)).get(PostListViewModel::class.java)
         viewModel.errorMessage.observe(this, Observer {
             errorMessage -> if(errorMessage != null) showError(errorMessage) else hideError()
         })

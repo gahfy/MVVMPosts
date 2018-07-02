@@ -64,8 +64,7 @@ dependencies {
     implementation "com.squareup.retrofit2:converter-moshi:$retrofit_version"
 
     // Koin
-    implementation "org.koin:koin-android:$koin_version"
-
+    implementation "org.koin:koin-android-architecture:$koin_version"
 
     //Rx
     implementation "io.reactivex.rxjava2:rxjava:2.1.15"

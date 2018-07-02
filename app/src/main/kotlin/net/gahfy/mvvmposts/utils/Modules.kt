@@ -6,13 +6,14 @@ import io.reactivex.schedulers.Schedulers
 import net.gahfy.mvvmposts.model.database.AppDatabase
 import net.gahfy.mvvmposts.network.PostApi
 import net.gahfy.mvvmposts.ui.post.PostListViewModel
+import org.koin.android.architecture.ext.viewModel
 import org.koin.dsl.module.Module
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.moshi.MoshiConverterFactory
 
 fun postsModule(applicationContext: Context): Module = org.koin.dsl.module.applicationContext {
-    factory { PostListViewModel(get("dao"), get("network")) }
+    viewModel { PostListViewModel(get("dao"), get("network")) }
     bean("dao") {
         Room.databaseBuilder(applicationContext, AppDatabase::class.java, "posts").build().postDao()
     }
