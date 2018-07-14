@@ -10,5 +10,5 @@ interface PostDao {
     val all: List<Post>
 
     @Insert
-    fun insertAll(vararg users: Post)
+    fun insertAll(vararg posts: Post)
 }

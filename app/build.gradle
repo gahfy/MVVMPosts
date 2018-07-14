@@ -29,6 +29,9 @@ android {
         test.java.srcDirs = ['src/test/kotlin']
         androidTest.java.srcDirs = ['src/androidTest/kotlin']
     }
+    testOptions {
+        unitTests.returnDefaultValues = true
+    }
 }
 
 dependencies {
@@ -63,12 +66,13 @@ dependencies {
     implementation "com.squareup.retrofit2:adapter-rxjava2:$retrofit_version"
     implementation "com.squareup.retrofit2:converter-moshi:$retrofit_version"
 
-    // Dagger 2
-    implementation "com.google.dagger:dagger:$dagger2_version"
-    kapt "com.google.dagger:dagger-compiler:$dagger2_version"
-    compileOnly "org.glassfish:javax.annotation:3.1.1"
-
     //Rx
     implementation "io.reactivex.rxjava2:rxjava:2.1.15"
     implementation "io.reactivex.rxjava2:rxandroid:2.0.2"
+
+    // Gson
+    testImplementation "com.google.code.gson:gson:2.8.2"
+
+    // Android Arch Core Testing
+    testImplementation 'android.arch.core:core-testing:1.1.1'
 }

@@ -1,21 +1,18 @@
 package net.gahfy.mvvmposts.ui.post
 
 import android.arch.lifecycle.MutableLiveData
+import android.arch.lifecycle.ViewModel
 import android.view.View
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
 import net.gahfy.mvvmposts.R
-import net.gahfy.mvvmposts.base.BaseViewModel
 import net.gahfy.mvvmposts.model.Post
 import net.gahfy.mvvmposts.model.PostDao
 import net.gahfy.mvvmposts.network.PostApi
-import javax.inject.Inject
 
-class PostListViewModel(private val postDao: PostDao):BaseViewModel(){
-    @Inject
-    lateinit var postApi: PostApi
+class PostListViewModel(private val postDao: PostDao, private val postApi: PostApi) : ViewModel() {
     val postListAdapter: PostListAdapter = PostListAdapter()
 
     val loadingVisibility: MutableLiveData<Int> = MutableLiveData()

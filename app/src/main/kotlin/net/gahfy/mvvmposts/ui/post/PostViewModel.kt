@@ -1,10 +1,10 @@
 package net.gahfy.mvvmposts.ui.post
 
 import android.arch.lifecycle.MutableLiveData
-import net.gahfy.mvvmposts.base.BaseViewModel
+import android.arch.lifecycle.ViewModel
 import net.gahfy.mvvmposts.model.Post
 
-class PostViewModel:BaseViewModel() {
+class PostViewModel : ViewModel() {
     private val postTitle = MutableLiveData<String>()
     private val postBody = MutableLiveData<String>()
 
