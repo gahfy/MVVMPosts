@@ -1,0 +1,19 @@
+language: android
+android:
+  components:
+    - android-28
+    - build-tools-27.0.3
+
+env:
+  global:
+   # install timeout in minutes (2 minutes by default)
+    - ADB_INSTALL_TIMEOUT=8
+
+# Run assemble, unit tests, and create coverage report
+script:
+  - ./gradlew clean assembleDebug assembleRelease testDebug createDebugUnitTestCoverageReport
+  # Renaming folder and files of reports so codecov.io can find it
+  - mv app/build/reports/jacoco/createDebugUnitTestCoverageReport app/build/reports/jacoco/jacocoTestDebugUnitTestReport
+  - mv app/build/reports/jacoco/jacocoTestDebugUnitTestReport/createDebugUnitTestCoverageReport.xml app/build/reports/jacoco/jacocoTestDebugUnitTestReport/jacocoTestDebugUnitTestReport.xml
+  # Codecov.io
+  - bash <(curl -s https://codecov.io/bash)
