@@ -1,0 +1,1 @@
+[![Build Status](https://travis-ci.org/gahfy/MVVMPosts.svg?branch=continuous_integration)](https://travis-ci.org/gahfy/MVVMPosts) [![Codecov](https://codecov.io/github/gahfy/MVVMPosts/coverage.svg?branch=continuous_integration)](https://codecov.io/gh/gahfy/MVVMPosts)
