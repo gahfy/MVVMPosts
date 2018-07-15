@@ -7,7 +7,6 @@ import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
-import net.gahfy.mvvmposts.R
 import net.gahfy.mvvmposts.model.Post
 import net.gahfy.mvvmposts.model.PostDao
 import net.gahfy.mvvmposts.network.PostApi
