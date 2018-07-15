@@ -48,7 +48,9 @@ class PostListViewModel(private val postDao: PostDao, private val postApi: PostA
                 .doOnTerminate { onRetrievePostListFinish() }
                 .subscribe(
                         { result -> onRetrievePostListSuccess(result) },
-                        { onRetrievePostListError() }
+                        { t ->
+                            onRetrievePostListError(t)
+                        }
                 )
     }
 
@@ -65,7 +67,7 @@ class PostListViewModel(private val postDao: PostDao, private val postApi: PostA
         postListAdapter.updatePostList(postList)
     }
 
-    private fun onRetrievePostListError(){
+    private fun onRetrievePostListError(t: Throwable) {
         errorMessage.value = R.string.post_error
     }
 }

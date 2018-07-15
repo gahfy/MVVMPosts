@@ -15,6 +15,7 @@ class ApiUtils {
 
             val kotlinBuildClassesFolder = ApiUtils::class.java.protectionDomain.codeSource.location.path
             val assetsPath = kotlinBuildClassesFolder.replace("/build/tmp/kotlin-classes/debugUnitTest/", "/src/test/assets/api_mocks/$jsonPath")
+                    .replace("/build/tmp/kotlin-classes/releaseUnitTest/", "/src/test/assets/api_mocks/$jsonPath")
 
             val inputStream = FileInputStream(assetsPath)
             val bufferedReader = BufferedReader(InputStreamReader(inputStream))
