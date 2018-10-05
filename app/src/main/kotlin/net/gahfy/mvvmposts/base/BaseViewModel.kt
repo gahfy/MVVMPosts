@@ -5,6 +5,7 @@ import net.gahfy.mvvmposts.injection.component.DaggerViewModelInjector
 import net.gahfy.mvvmposts.injection.component.ViewModelInjector
 import net.gahfy.mvvmposts.injection.module.NetworkModule
 import net.gahfy.mvvmposts.ui.post.PostListViewModel
+import net.gahfy.mvvmposts.ui.post.PostViewModel
 
 abstract class BaseViewModel:ViewModel(){
     private val injector: ViewModelInjector = DaggerViewModelInjector
@@ -22,6 +23,7 @@ abstract class BaseViewModel:ViewModel(){
     private fun inject() {
         when (this) {
             is PostListViewModel -> injector.inject(this)
+            is PostViewModel -> injector.inject(this)
         }
     }
 }
